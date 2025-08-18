@@ -2,15 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Authors>James Petty</Authors>
+    <Authors>Mavusi</Authors>
     <Product>HtmlRendererCore</Product>
+    <PackageId>Mavusi.HtmlRendererCore.PdfSharp</PackageId>
     <Copyright />
-    <PackageLicenseFile></PackageLicenseFile>
-    <PackageProjectUrl>https://github.com/j-petty/HtmlRendererCore</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/j-petty/HtmlRendererCore</RepositoryUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/mavusi/HtmlRendererCore</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/mavusi/HtmlRendererCore</RepositoryUrl>
     <Description>HtmlRendererCore is a partial port of HtmlRenderer for .NET Core.</Description>
+    <PackageTags>html;renderer;pdf;pdfsharp;html-to-pdf;netcore;net8;html-rendering;pdf-generation;document-conversion</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.5</Version>
+    <Version>1.0.7</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,6 +24,11 @@
   <ItemGroup>
     <EmbeddedResource Include="Core\Utils\ImageError.png" />
     <EmbeddedResource Include="Core\Utils\ImageLoad.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+    <None Include="LICENSE.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>
