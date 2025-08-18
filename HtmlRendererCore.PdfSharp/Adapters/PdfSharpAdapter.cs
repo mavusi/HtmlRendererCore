@@ -32,12 +32,12 @@ namespace HtmlRendererCore.PdfSharp.Adapters
             AddFontFamilyMapping("monospace", "Courier New");
             AddFontFamilyMapping("Helvetica", "Arial");
 
-            var families = new InstalledFontCollection();
+            //var families = new InstalledFontCollection();
 
-            foreach (var family in families.Families)
-            {
-                AddFontFamily(new FontFamilyAdapter(new XFontFamily(family.Name)));
-            }
+            //foreach (var family in families.Families)
+            //{
+            //    AddFontFamily(new FontFamilyAdapter(new XFontFamily(family.Name)));
+            //}
         }
 
         /// <summary>
