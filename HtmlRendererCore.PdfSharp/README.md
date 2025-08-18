@@ -1,8 +1,9 @@
 # PdfSharpCore (forked)
 
-[![NuGet Version](https://img.shields.io/nuget/v/Moondigo.PdfSharpCore.svg)](https://www.nuget.org/packages/Moondigo.PdfSharpCore/)
-[![CI](https://github.com/thrull/Moondigo.PdfSharpCore/actions/workflows/build.yml/badge.svg)](https://github.com/thrull/Moondigo.PdfSharpCore/actions/workflows/build.yml)
-[![codecov.io](https://codecov.io/github/thrull/Moondigo.PdfSharpCore/coverage.svg?branch=master)](https://codecov.io/github/thrull/Moondigo.PdfSharpCore?branch=master)
+This package fork removes the dependency on GDI+ so that it can be used in Linux-based environments, such as Docker containers or Azure Functions.
+
+
+[![NuGet Version](https://img.shields.io/nuget/v/Mavusi.PdfSharpCore.svg)](https://www.nuget.org/packages/Mavusi.PdfSharpCore/)
 
 **PdfSharpCore** (forked by Moondigo) is a partial port of [PdfSharp.Xamarin](https://github.com/roceh/PdfSharp.Xamarin/) for .NET Standard.
 Additionally MigraDoc has been ported as well (from version 1.32).
