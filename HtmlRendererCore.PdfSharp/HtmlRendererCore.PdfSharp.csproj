@@ -1,19 +1,38 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <!-- Package Metadata -->
     <Authors>Mavusi</Authors>
     <Product>HtmlRendererCore</Product>
     <PackageId>Mavusi.HtmlRendererCore.PdfSharp</PackageId>
-    <Copyright />
+    <Description>HtmlRendererCore is a partial port of HtmlRenderer for .NET Core. Supports rendering HTML to PDF using PdfSharp on .NET 8, 9, and 10.</Description>
+    <Copyright>Copyright © Mavusi</Copyright>
+    <Version>2.0.0</Version>
+    <PackageTags>html;renderer;pdf;pdfsharp;html-to-pdf;netcore;net8;net9;net10;html-rendering;pdf-generation;document-conversion</PackageTags>
+
+    <!-- Package Files -->
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+
+    <!-- Package URLs -->
     <PackageProjectUrl>https://github.com/mavusi/HtmlRendererCore</PackageProjectUrl>
     <RepositoryUrl>https://github.com/mavusi/HtmlRendererCore</RepositoryUrl>
-    <Description>HtmlRendererCore is a partial port of HtmlRenderer for .NET Core.</Description>
-    <PackageTags>html;renderer;pdf;pdfsharp;html-to-pdf;netcore;net8;html-rendering;pdf-generation;document-conversion</PackageTags>
+    <RepositoryType>git</RepositoryType>
+
+    <!-- Build Settings -->
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.8</Version>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+    <!-- Symbol Package Settings -->
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
   </PropertyGroup>
 
   <ItemGroup>
@@ -32,10 +51,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Mavusi.PdfSharpCore" Version="1.0.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.11" />
-    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="Mavusi.PdfSharpCore" Version="2.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.12" />
     <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
   </ItemGroup>
 
