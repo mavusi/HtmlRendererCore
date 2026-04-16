@@ -1,10 +1,12 @@
 ﻿using PdfSharpCore.Drawing;
+using PdfSharpCore.Fonts;
 using PdfSharpCore.Pdf;
 using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
 using HtmlRendererCore.Adapters;
 using HtmlRendererCore.Adapters.Entities;
+using HtmlRendererCore.PdfSharp.Fonts;
 using HtmlRendererCore.PdfSharp.Utilities;
 
 namespace HtmlRendererCore.PdfSharp.Adapters
@@ -25,12 +27,25 @@ namespace HtmlRendererCore.PdfSharp.Adapters
 
 
         /// <summary>
-        /// Init color resolve.
+        /// Init color resolve and font resolver.
         /// </summary>
         private PdfSharpAdapter()
         {
-            AddFontFamilyMapping("monospace", "Courier New");
-            AddFontFamilyMapping("Helvetica", "Arial");
+            // Initialize embedded font resolver for environments without system font access
+            InitializeFontResolver();
+
+            // Map common font family names to bundled Liberation fonts
+            AddFontFamilyMapping("monospace", "Liberation Mono");
+            AddFontFamilyMapping("Courier New", "Liberation Mono");
+            AddFontFamilyMapping("Courier", "Liberation Mono");
+
+            AddFontFamilyMapping("Helvetica", "Liberation Sans");
+            AddFontFamilyMapping("Arial", "Liberation Sans");
+            AddFontFamilyMapping("sans-serif", "Liberation Sans");
+
+            AddFontFamilyMapping("Times New Roman", "Liberation Serif");
+            AddFontFamilyMapping("Times", "Liberation Serif");
+            AddFontFamilyMapping("serif", "Liberation Serif");
 
             //var families = new InstalledFontCollection();
 
@@ -38,6 +53,28 @@ namespace HtmlRendererCore.PdfSharp.Adapters
             //{
             //    AddFontFamily(new FontFamilyAdapter(new XFontFamily(family.Name)));
             //}
+        }
+
+        /// <summary>
+        /// Initialize the custom font resolver for embedded fonts.
+        /// This allows the library to work in Docker and restricted environments.
+        /// </summary>
+        private void InitializeFontResolver()
+        {
+            try
+            {
+                // Set up the embedded font resolver if not already configured
+                if (GlobalFontSettings.FontResolver == null)
+                {
+                    EmbeddedFontResolver.Initialize();
+                    GlobalFontSettings.FontResolver = new EmbeddedFontResolver();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log initialization errors but don't fail
+                System.Diagnostics.Debug.WriteLine($"Font resolver initialization warning: {ex.Message}");
+            }
         }
 
         /// <summary>

@@ -8,6 +8,12 @@ This library offers Html to Pdf parsing for .Net Core projects using [PdfSharpCo
 
 Future updates will be focused at cleaning up the codebase and offering support for more advanced HTML rendering. Public pull requests welcome.
 
+## Features
+
+- **Docker & Cloud Ready**: Bundled Liberation Fonts ensure reliable PDF generation without system font dependencies
+- **Environment Independent**: Works in Docker containers, Azure Functions, AWS Lambda, and restricted environments
+- **Automatic Font Fallback**: Common fonts (Arial, Times New Roman, Courier New) automatically map to open-source equivalents
+
 ## Example usage 
 
 ### Generate PDF from HTML
@@ -30,6 +36,16 @@ using (var stream = new MemoryStream())
     result = Convert.ToBase64String(stream.ToArray());
 }
 ```
+
+## Font Support
+
+HtmlRendererCore now bundles open-source Liberation Fonts for reliable PDF generation in any environment:
+
+- **No System Fonts Required**: Works in Docker, serverless functions, and restricted environments
+- **Automatic Font Mapping**: Arial → Liberation Sans, Times New Roman → Liberation Serif, etc.
+- **Zero Configuration**: Fonts are embedded in the assembly - just install and use
+
+For developers contributing to this project, see [HtmlRendererCore.PdfSharp/Fonts/README.md](HtmlRendererCore.PdfSharp/Fonts/README.md) for instructions on adding the Liberation Fonts to your development environment.
 
 ## Documentation
 

@@ -1,0 +1,39 @@
+# Example Dockerfile for HtmlRendererCore with Embedded Fonts
+
+# This Dockerfile demonstrates that HtmlRendererCore.PdfSharp now works
+# in Docker without installing any system fonts!
+
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+
+# Copy project files
+COPY ["YourApp/YourApp.csproj", "YourApp/"]
+RUN dotnet restore "YourApp/YourApp.csproj"
+
+# Copy source code and build
+COPY . .
+WORKDIR "/src/YourApp"
+RUN dotnet build "YourApp.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "YourApp.csproj" -c Release -o /app/publish
+
+# Final runtime image
+FROM mcr.microsoft.com/dotnet/runtime:8.0 AS final
+WORKDIR /app
+
+# 🎉 No font packages needed! Fonts are embedded in the assembly.
+# Previously you would need: apt-get install fonts-liberation
+
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "YourApp.dll"]
+
+# Example usage:
+# docker build -t myapp .
+# docker run myapp
+
+# The following fonts are automatically available:
+# - Arial → Liberation Sans
+# - Times New Roman → Liberation Serif  
+# - Courier New → Liberation Mono
+# - And all their bold/italic/bold-italic variants

@@ -38,11 +38,14 @@
   <ItemGroup>
     <None Remove="Core\Utils\ImageError.png" />
     <None Remove="Core\Utils\ImageLoad.png" />
+    <None Remove="Fonts\*.ttf" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Core\Utils\ImageError.png" />
     <EmbeddedResource Include="Core\Utils\ImageLoad.png" />
+    <!-- Embed Liberation Fonts as resources for Docker/restricted environments -->
+    <EmbeddedResource Include="Fonts\*.ttf" />
   </ItemGroup>
 
   <ItemGroup>
